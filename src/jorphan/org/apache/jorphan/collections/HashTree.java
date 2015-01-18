@@ -752,12 +752,16 @@ public class HashTree implements Serializable, Map, Cloneable {
     /**
      * Finds the given current key, and replaces it with the given new key. Any
      * tree structure found under the original key is moved to the new key.
+     * @return 
      */
-    public void replace(Object currentKey, Object newKey) {
+    public Object replace(Object currentKey, Object newKey) {
         HashTree tree = getTree(currentKey);
         data.remove(currentKey);
         data.put(newKey, tree);
+        return this;
     }
+    
+    
 
     /**
      * Gets an array of all keys in the current HashTree node. If the HashTree

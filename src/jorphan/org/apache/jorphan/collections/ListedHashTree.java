@@ -107,11 +107,12 @@ public class ListedHashTree extends HashTree implements Serializable, Cloneable 
         super.set(key, values);
     }
 
-    public void replace(Object currentKey, Object newKey) {
+    public Object replace(Object currentKey, Object newKey) {
         HashTree tree = getTree(currentKey);
         data.remove(currentKey);
         data.put(newKey, tree);
         order.set(order.indexOf(currentKey), newKey);
+        return this;
     }
 
     public HashTree createNewTree() {
